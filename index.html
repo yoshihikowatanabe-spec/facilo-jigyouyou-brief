@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>事業用クラウド クリエイティブブリーフ | Facilo</title>
+<style>
+  :root {
+    --ground: #FAFAF8;
+    --surface: #EDEAE4;
+    --surface-alt: #E3DFD8;
+    --text: #1A1A1A;
+    --text-secondary: #5A5A56;
+    --text-muted: #8A8A84;
+    --accent: #2B5C8A;
+    --accent-light: #3A7AB8;
+    --accent-bg: #EDF3F8;
+    --warm: #C4703A;
+    --warm-bg: #FBF0E6;
+    --green: #2D7D5F;
+    --green-bg: #E8F5EE;
+    --divider: #D8D4CC;
+    --card-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #18191C;
+      --surface: #222428;
+      --surface-alt: #2A2D32;
+      --text: #E8E6E2;
+      --text-secondary: #A8A8A4;
+      --text-muted: #707070;
+      --accent: #5A9FD4;
+      --accent-light: #6DB3E8;
+      --accent-bg: #1E2A36;
+      --warm: #D4883E;
+      --warm-bg: #2A2218;
+      --green: #4CAF7D;
+      --green-bg: #1A2E22;
+      --divider: #333538;
+      --card-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #18191C; --surface: #222428; --surface-alt: #2A2D32;
+    --text: #E8E6E2; --text-secondary: #A8A8A4; --text-muted: #707070;
+    --accent: #5A9FD4; --accent-light: #6DB3E8; --accent-bg: #1E2A36;
+    --warm: #D4883E; --warm-bg: #2A2218;
+    --green: #4CAF7D; --green-bg: #1A2E22;
+    --divider: #333538; --card-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  }
+  :root[data-theme="light"] {
+    --ground: #FAFAF8; --surface: #EDEAE4; --surface-alt: #E3DFD8;
+    --text: #1A1A1A; --text-secondary: #5A5A56; --text-muted: #8A8A84;
+    --accent: #2B5C8A; --accent-light: #3A7AB8; --accent-bg: #EDF3F8;
+    --warm: #C4703A; --warm-bg: #FBF0E6;
+    --green: #2D7D5F; --green-bg: #E8F5EE;
+    --divider: #D8D4CC; --card-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--ground);
+    color: var(--text);
+    font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  /* --- Header --- */
+  .page-header { margin-bottom: 48px; }
+  .page-header .eyebrow {
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); font-weight: 700; margin-bottom: 8px;
+  }
+  .page-header h1 {
+    font-size: 26px; font-weight: 800; line-height: 1.35;
+    text-wrap: balance; margin-bottom: 12px;
+  }
+  .page-header .subtitle {
+    font-size: 14px; color: var(--text-secondary); line-height: 1.6; max-width: 680px;
+  }
+
+  /* --- Section --- */
+  .section { margin-bottom: 56px; }
+  .section-label {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); font-weight: 700; margin-bottom: 6px;
+  }
+  .section h2 {
+    font-size: 19px; font-weight: 700; margin-bottom: 16px; line-height: 1.4;
+  }
+  .section > p {
+    color: var(--text-secondary); font-size: 14px; line-height: 1.7;
+    max-width: 680px; margin-bottom: 12px;
+  }
+
+  /* --- Overview grid --- */
+  .overview-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;
+  }
+  @media (max-width: 600px) { .overview-grid { grid-template-columns: 1fr; } }
+  .overview-card { background: var(--surface); padding: 20px; border-radius: 6px; }
+  .overview-card .ov-label {
+    font-size: 11px; letter-spacing: 0.08em; color: var(--text-muted);
+    font-weight: 600; margin-bottom: 6px;
+  }
+  .overview-card .ov-value { font-size: 15px; font-weight: 600; line-height: 1.5; }
+
+  /* --- Comparison table --- */
+  .table-wrap {
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    margin: 0 -24px; padding: 0 24px;
+  }
+  .comp-table {
+    width: 100%; min-width: 820px; border-collapse: collapse;
+    font-size: 13px; font-variant-numeric: tabular-nums;
+  }
+  .comp-table thead th {
+    background: var(--accent); color: #fff; font-weight: 600; font-size: 12px;
+    letter-spacing: 0.04em; padding: 10px 12px; text-align: left;
+    position: sticky; top: 0; white-space: nowrap;
+  }
+  .comp-table thead th:first-child { border-radius: 4px 0 0 0; }
+  .comp-table thead th:last-child { border-radius: 0 4px 0 0; }
+  .comp-table tbody td {
+    padding: 10px 12px; border-bottom: 1px solid var(--divider);
+    vertical-align: top; line-height: 1.55;
+  }
+  .comp-table tbody tr:last-child td { border-bottom: none; }
+  .comp-table tbody tr:nth-child(even) td { background: var(--surface); }
+  .comp-table .row-label {
+    font-weight: 700; color: var(--accent); white-space: nowrap; min-width: 100px;
+  }
+
+  /* --- Feature cards --- */
+  .feature-cards {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px;
+  }
+  @media (max-width: 700px) { .feature-cards { grid-template-columns: 1fr; } }
+  .feat-card {
+    background: var(--surface); border-radius: 8px; padding: 24px;
+    border-top: 3px solid var(--accent); box-shadow: var(--card-shadow);
+  }
+  .feat-card.feat-secondary { border-top-color: var(--green); }
+  .feat-num {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    color: var(--accent); margin-bottom: 8px;
+  }
+  .feat-card.feat-secondary .feat-num { color: var(--green); }
+  .feat-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; line-height: 1.35; }
+  .feat-card p {
+    font-size: 14px; line-height: 1.65; color: var(--text-secondary); margin-bottom: 10px;
+  }
+  .feat-detail { margin-top: 14px; }
+  .feat-detail dt {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+    color: var(--text-muted); margin-bottom: 2px; margin-top: 10px;
+  }
+  .feat-detail dt:first-child { margin-top: 0; }
+  .feat-detail dd {
+    font-size: 13px; line-height: 1.6; color: var(--text-secondary);
+  }
+
+  /* --- Segment cards --- */
+  .segment-cards { display: flex; flex-direction: column; gap: 24px; }
+  .seg-card {
+    background: var(--surface); border-radius: 8px;
+    overflow: hidden; box-shadow: var(--card-shadow);
+  }
+  .seg-card-header {
+    display: flex; align-items: center; gap: 14px;
+    padding: 18px 22px; background: var(--surface-alt);
+    border-bottom: 1px solid var(--divider);
+  }
+  .seg-icon {
+    width: 40px; height: 40px; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0; background: var(--accent-bg);
+  }
+  .seg-card-header h3 { font-size: 17px; font-weight: 700; }
+  .seg-card-header .seg-sub { font-size: 12px; color: var(--text-muted); margin-top: 1px; }
+  .seg-body {
+    padding: 20px 22px; display: grid;
+    grid-template-columns: 1fr 1fr; gap: 18px 28px;
+  }
+  @media (max-width: 600px) { .seg-body { grid-template-columns: 1fr; } }
+  .seg-field { min-width: 0; }
+  .seg-field-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+    color: var(--text-muted); margin-bottom: 4px;
+  }
+  .seg-field-value { font-size: 14px; line-height: 1.6; color: var(--text-secondary); }
+  .seg-field-value strong { color: var(--text); font-weight: 600; }
+  .seg-facilo {
+    grid-column: 1 / -1; background: var(--warm-bg);
+    border-radius: 5px; padding: 14px 16px; margin-top: 4px;
+  }
+  .seg-facilo .seg-field-label { color: var(--warm); }
+
+  /* --- Implications --- */
+  .impl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 600px) { .impl-grid { grid-template-columns: 1fr; } }
+  .impl-card {
+    background: var(--accent-bg); border-radius: 6px;
+    padding: 18px 20px; border-left: 3px solid var(--accent);
+  }
+  .impl-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 8px; color: var(--accent); }
+  .impl-card p { font-size: 13px; line-height: 1.6; color: var(--text-secondary); }
+
+  /* --- Callout --- */
+  .callout {
+    border-left: 3px solid var(--warm); border-radius: 0 6px 6px 0;
+    padding: 18px 22px; margin-bottom: 24px; background: var(--warm-bg);
+  }
+  .callout p {
+    font-size: 14px; color: var(--text-secondary); line-height: 1.7; max-width: none;
+  }
+  .callout strong { color: var(--warm); }
+  .callout.callout-accent {
+    border-left-color: var(--accent); background: var(--accent-bg);
+  }
+  .callout.callout-accent strong { color: var(--accent); }
+  .callout.callout-green {
+    border-left-color: var(--green); background: var(--green-bg);
+  }
+  .callout.callout-green strong { color: var(--green); }
+
+  /* --- Creative direction --- */
+  .cr-axis {
+    background: var(--surface); border-radius: 8px; padding: 22px;
+    margin-bottom: 16px; box-shadow: var(--card-shadow);
+  }
+  .cr-axis h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+  .cr-axis .cr-priority {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.06em; padding: 2px 8px; border-radius: 3px;
+    margin-bottom: 8px;
+  }
+  .cr-axis .cr-priority.main {
+    background: var(--accent); color: #fff;
+  }
+  .cr-axis .cr-priority.sub {
+    background: var(--surface-alt); color: var(--text-secondary);
+  }
+  .cr-axis p {
+    font-size: 13px; line-height: 1.6; color: var(--text-secondary);
+  }
+  .cr-axis ul {
+    margin-top: 8px; padding-left: 18px;
+    font-size: 13px; line-height: 1.7; color: var(--text-secondary);
+  }
+  .cr-axis li { margin-bottom: 4px; }
+
+  /* --- Footer --- */
+  .page-footer {
+    margin-top: 56px; padding-top: 20px;
+    border-top: 1px solid var(--divider);
+    font-size: 12px; color: var(--text-muted);
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+
+  /* --- TOC --- */
+  .toc {
+    background: var(--surface); border-radius: 6px;
+    padding: 20px 24px; margin-bottom: 48px;
+  }
+  .toc-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+    color: var(--text-muted); margin-bottom: 10px;
+  }
+  .toc ol {
+    padding-left: 20px; font-size: 14px; line-height: 1.8;
+    color: var(--accent);
+  }
+  .toc a {
+    color: var(--accent); text-decoration: none;
+  }
+  .toc a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <div class="eyebrow">Facilo 事業用クラウド — 社外秘</div>
+    <h1>クリエイティブブリーフ：新機能訴求とターゲット整理</h1>
+    <p class="subtitle">事業用クラウドに大きな新機能が2つ加わります。クリエイティブ制作にあたって、新機能の内容・ターゲットセグメントの特性・訴求の方向性を整理したドキュメントです。</p>
+  </header>
+
+  <nav class="toc">
+    <div class="toc-label">目次</div>
+    <ol>
+      <li><a href="#new-features">新機能2つの概要</a></li>
+      <li><a href="#market">事業用不動産の基本構造</a></li>
+      <li><a href="#segments-summary">6セグメント比較サマリ</a></li>
+      <li><a href="#segments-detail">セグメント別の詳細</a></li>
+      <li><a href="#matching-direction">マッチング方向性の違い</a></li>
+      <li><a href="#creative-direction">クリエイティブの訴求軸</a></li>
+    </ol>
+  </nav>
+
+  <!-- ===== 1. 新機能 ===== -->
+  <section class="section" id="new-features">
+    <div class="section-label">新機能</div>
+    <h2>クリエイティブの主軸となる2つの新機能</h2>
+    <p>この2つの機能により、事業用クラウドは「事業用仲介ツールとして胸を張って言えるレベル」になります。クリエイティブはこの2機能を軸に構成してください。</p>
+
+    <div class="feature-cards">
+      <div class="feat-card">
+        <div class="feat-num">NEW FEATURE 01</div>
+        <h3>物件概要書 AI自動書き換え</h3>
+        <p>物元（売主側仲介）から届いた物件概要書（PDF/Excel/画像）をアップロードするだけで、AIが40項目以上を自動で読み取り、<strong>自社の書式に変換</strong>して登録する機能。</p>
+        <dl class="feat-detail">
+          <dt>解決するペイン</dt>
+          <dd>事業用仲介では、物元から届く概要書を「自社フォーマットに書き換える」作業が日常的に発生する。1件あたり数十分かかる手作業で、仕入れ担当の時間を大きく圧迫している。</dd>
+          <dt>単なる「取込」ではない</dt>
+          <dd>OCRで読み取って登録するだけでなく、<strong>自社の書式・項目体系に合わせて再構成する</strong>のがポイント。競合のレリーズ（レメティス社）はこの機能単体で導入が決まるケースがあるほど、事業用仲介のど真ん中のペイン。</dd>
+          <dt>訴求のキーワード</dt>
+          <dd>「書き換え」「自社書式に変換」「転記作業からの解放」「数十分→数秒」</dd>
+        </dl>
+      </div>
+      <div class="feat-card feat-secondary">
+        <div class="feat-num">NEW FEATURE 02</div>
+        <h3>非構造化AIマッチング</h3>
+        <p>営業の商談メモ・顧客ヒアリングメモなど、<strong>整理されていないテキストデータ</strong>をAIが読み取り、物件情報と顧客ニーズを自動で照合する機能。</p>
+        <dl class="feat-detail">
+          <dt>解決するペイン</dt>
+          <dd>事業用仲介では「あの物件を誰に出すか」が営業個人の記憶と人脈に依存している。ベテラン営業の頭の中にしかないマッチング判断を、AIが仕組み化する。</dd>
+          <dt>「共有」ではなく「マッチング」</dt>
+          <dd>この機能が解くのは「情報共有」の問題ではなく、<strong>「物件と顧客の照合」の問題</strong>。普段の商談メモを書くだけで、特別な入力・整理なしにAIがマッチングを行う。</dd>
+          <dt>訴求のキーワード</dt>
+          <dd>「記憶に頼らない」「メモを書くだけで」「提案漏れゼロ」「属人化の解消」</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="callout callout-accent">
+      <p><strong>重要：</strong>いただいたクリエイティブ一覧のNo.1-5「物件概要書のAI自動取込」は方向性として近いですが、単なる「取込・登録」ではなく「自社書式への書き換え」が差別化ポイントです。また、AIマッチングに関する訴求軸は一覧に含まれていないため、新たに追加が必要です。</p>
+    </div>
+  </section>
+
+  <!-- ===== 2. 前提 ===== -->
+  <section class="section" id="market">
+    <div class="section-label">市場理解</div>
+    <h2>事業用不動産の基本構造 — 居住用との違い</h2>
+    <p>事業用仲介のクリエイティブを作るにあたり、居住用（購入・売却・賃貸クラウド）との根本的な違いを押さえてください。</p>
+
+    <div class="overview-grid">
+      <div class="overview-card">
+        <div class="ov-label">ワークフローの軸</div>
+        <div class="ov-value">居住用 =「顧客軸」（顧客 → 物件を探す）<br>事業用 =「物件軸」（物件 → 出す先を探す）</div>
+      </div>
+      <div class="overview-card">
+        <div class="ov-label">意思決定</div>
+        <div class="ov-value">居住用 = 感情・生活イメージ・家族合意<br>事業用 = 数字・事業計画・投資判断</div>
+      </div>
+      <div class="overview-card">
+        <div class="ov-label">情報流通</div>
+        <div class="ov-value">居住用 = SUUMO・レインズ等の集約PFあり<br>事業用 = 集約PFなし。物件概要書の直接流通</div>
+      </div>
+      <div class="overview-card">
+        <div class="ov-label">基本ドキュメント</div>
+        <div class="ov-value">居住用 = 販売図面（マイソク）<br>事業用 = 物件概要書（物元作成→仲介が自社書式に書き換え）</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p><strong>事業用仲介の核心課題：</strong>集約プラットフォームがないため、物件情報は各社がExcel・紙・メールで個別管理。「あの物件を誰に出すか」は営業個人の記憶と人脈に依存しており、組織的な物件マッチングの仕組みがない。これがFacilo事業用クラウドが解こうとしている問題です。</p>
+    </div>
+  </section>
+
+  <!-- ===== 3. サマリ比較表 ===== -->
+  <section class="section" id="segments-summary">
+    <div class="section-label">ターゲット</div>
+    <h2>「事業用」は一枚岩ではない — 6セグメント比較</h2>
+    <p>「事業用不動産」とひとまとめにされがちですが、オフィス・店舗・工場・倉庫・物流施設・投資用一棟マンションでは、顧客層・取引の性質・営業フローが大きく異なります。コピーを書く際、どのセグメントに向けているかを意識してください。</p>
+
+    <div class="table-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>オフィス</th>
+            <th>店舗</th>
+            <th>工場</th>
+            <th>倉庫</th>
+            <th>物流施設</th>
+            <th>投資用一棟</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-label">主な顧客</td>
+            <td>法人（移転・拡張）</td>
+            <td>法人・個人事業主</td>
+            <td>製造業法人</td>
+            <td>法人（物流・小売）</td>
+            <td>デベ・物流大手・機関投資家</td>
+            <td>富裕層・投資法人</td>
+          </tr>
+          <tr>
+            <td class="row-label">価格帯</td>
+            <td>中〜大（坪単価重視）</td>
+            <td>小〜中</td>
+            <td>中〜大</td>
+            <td>小〜中</td>
+            <td>大〜超大型</td>
+            <td>中〜大</td>
+          </tr>
+          <tr>
+            <td class="row-label">意思決定者</td>
+            <td>総務部長・経営層</td>
+            <td>オーナー本人</td>
+            <td>工場長・経営層</td>
+            <td>物流/購買部門</td>
+            <td>経営・投資委員会</td>
+            <td>個人 or 投資委員会</td>
+          </tr>
+          <tr>
+            <td class="row-label">決定の軸</td>
+            <td>立地・グレード・賃料</td>
+            <td>人通り・視認性・賃料</td>
+            <td>用途地域・天高・電力</td>
+            <td>アクセス・天高・荷捌き</td>
+            <td>立地・規模・利回り</td>
+            <td>利回り・稼働率</td>
+          </tr>
+          <tr>
+            <td class="row-label">取引サイクル</td>
+            <td>3〜6ヶ月</td>
+            <td>1〜3ヶ月</td>
+            <td>6〜12ヶ月+</td>
+            <td>3〜6ヶ月</td>
+            <td>6〜18ヶ月</td>
+            <td>1〜6ヶ月</td>
+          </tr>
+          <tr>
+            <td class="row-label">情報の属人度</td>
+            <td>高い</td>
+            <td>中程度</td>
+            <td>非常に高い</td>
+            <td>高い</td>
+            <td>高い（少数PL）</td>
+            <td>中〜高</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===== 4. 各セグメント詳細 ===== -->
+  <section class="section" id="segments-detail">
+    <div class="section-label">詳細</div>
+    <h2>セグメント別の特性と新機能の刺さり方</h2>
+
+    <div class="segment-cards">
+
+      <!-- オフィス -->
+      <div class="seg-card">
+        <div class="seg-card-header">
+          <div class="seg-icon">🏢</div>
+          <div>
+            <h3>オフィス</h3>
+            <div class="seg-sub">賃貸・売買ともに最もボリュームが大きい事業用の主戦場</div>
+          </div>
+        </div>
+        <div class="seg-body">
+          <div class="seg-field">
+            <div class="seg-field-label">顧客像</div>
+            <div class="seg-field-value"><strong>法人の総務・管理部門</strong>。移転・拡張・統合がトリガー。テナント代表は総務部長クラスが多い</div>
+          </div>
+          <div class="seg-field">
+            <div class="seg-field-label">取引の特徴</div>
+            <div class="seg-field-value">坪単価×面積で比較。共益費・フリーレント・原状回復など<strong>交渉変数が多い</strong>。3〜6ヶ月が標準</div>
+          </div>
+          <div class="seg-field">
+            <div class="seg-field-label">営業フロー</div>
+            <div class="seg-field-value">ニーズヒアリング → 複数ビルの概要書送付 → 内覧 → 条件交渉 → 申込。<strong>物件比較表を自社書式で作成</strong>が一般的</div>
+          </div>
+          <div class="seg-field">
+            <div class="seg-field-label">競合環境</div>
+            <div class="seg-field-value">三鬼商事・三幸エステート・CBRE等。<strong>ビル情報DBは各社独自構築</strong>で、それ自体が競争優位</div>
+          </div>
+          <div class="seg-facilo">
+            <div class="seg-field-label">新機能の刺さり方</div>
+            <div class="seg-field-value"><strong>概要書の書き換え頻度が最も高い</strong>セグメント → 自動書き換えの最直球ターゲット。「このニーズに合うビルは？」の照合 → AIマッチングも自然にハマる</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 店舗 -->
+      <div class="seg-card">
+        <div class="seg-card-header">
+          <div class="seg-icon">🏪</div>
+          <div>
+            <h3>店舗</h3>
+            <div class="seg-sub">飲食・小売・サービス業の出店。意思決定が速く、感覚値も入る</div>
+          </div>
+        </div>
+        <div class="seg-body">
+          <div class="seg-field">
+            <div class="seg-field-label">顧客像</div>
+            <div class="seg-field-value"><strong>個人事業主・中小法人のオーナー</strong>。飲食店・美容室・クリニック等。FC本部がテナント探しをするケースも</div>
+          </div>
+          <div class="seg-field">
+            <div class="seg-field-label">取引の特徴</div>
+            <div class="seg-field-value"><strong>立地と人通りが全て</strong>。居抜き物件は特に動きが速い。1〜3ヶ月。鮮度が命</div>
+          </div>
+          <div class="seg-field">
+            <div class="seg-field-label">営業フロー</div>
+            <div class="seg-field-value">空き物件情報を出店希望者にスピード配信するのが勝負。内覧→即決もあり得る</div>
+          </div>
+          <div class="seg-field">
+            <div class="seg-field-label">競合環境</div>
+            <div class="seg-field-value">居抜き市場・テンポスマート等の専門PFがある程度機能。事業用の中では標準化が進んでいる方</div>
+          </div>
+          <div class="seg-facilo">
+            <div class="seg-field-label">新機能の刺さり方</div>
+            <div class="seg-field-value">件数が多くサイクルが短い → <strong>出し忘れ・マッチング漏れ</strong>が実害に直結。AIマッチングで提案速度を上げる訴求が有効。概要書は簡素なため書き換え訴求の優先度はやや低い</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 工場 -->
+      <div class="seg-card">
+        <div class="seg-card-header">
+          <div class="seg-icon">🏭</div>
+          <div>
+            <h3>工場</h3>
+            <div class="seg-sub">用途地域・環境規制が絡み、専門性が極めて高い</div>
+          </div>
+        </div>
+        <div class="seg-body">
+          <div class="seg-field">
+            <div class="seg-field-label">顧客像</div>
+            <div class="seg-field-value"><strong>製造業法人の経営層・工場長</strong>。移転は全社意思決定で取締役会マター</div>
+          </div>
+          <div class="seg-field">
+            <div class="seg-field-label">取引の特徴</div>
+            <div class="seg-field-value"><strong>スペック要求が極めて具体的</strong>：天井高・床耐荷重・電力容量・排水設備・用途地域。合致物件が少なく6〜12ヶ月+</div>
+          </div>
+          <div class="seg-field">
+            <div class="seg-field-label">営業フロー</div>
+            <div class="seg-field-value">要件定義 → リストアップ → 現地調査 → 法規制確認 → 契約。工場特化のベテラン仲介者が中心</div>
+          </div>
+          <div class="seg-field">
+            <div class="seg-field-label">情報の属人性</div>
+            <div class="seg-field-value"><strong>最も属人度が高い</strong>。「この工場はあの会社の要件に合う」は数値照合だけでは判断不能、経験則と土地勘に大きく依存</div>
+          </div>
+          <div class="seg-facilo">
+            <div class="seg-field-label">新機能の刺さり方</div>
+            <div class="seg-field-value">属人度が最も高い → <strong>AIマッチングの価値が最大</strong>のセグメント。概要書のスペック項目も40+と多く、自動書き換えの工数削減効果も大きい</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 倉庫 -->
+      <div class="seg-card">
+        <div class="seg-card-header">
+          <div class="seg-icon">📦</div>
+          <div>
+            <h3>倉庫</h3>
+            <div class="seg-sub">EC拡大で需要増。物流施設との境界がグラデーション</div>
+          </div>
+        </div>
+        <div class="seg-body">
+          <div class="seg-field">
+            <div class="seg-field-label">顧客像</div>
+            <div class="seg-field-value"><strong>物流会社・EC事業者・小売の物流/購買部門</strong>。3PL事業者が借り手になるケースも多い</div>
+          </div>
+          <div class="seg-field">
+            <div class="seg-field-label">取引の特徴</div>
+            <div class="seg-field-value">IC距離・天井高・トラックバース数・荷捌きスペースが重要。<strong>立地は「配送効率」で評価</strong></div>
+          </div>
+          <div class="seg-field">
+            <div class="seg-field-label">営業フロー</div>
+            <div class="seg-field-value">オペレーション要件ヒアリング → 候補提案 → 現地確認。<strong>「地図上で見る」ニーズが強い</strong></div>
+          </div>
+          <div class="seg-field">
+            <div class="seg-field-label">市場トレンド</div>
+            <div class="seg-field-value">EC拡大で慢性的な供給不足。既存倉庫の転用・リノベーション案件が増加</div>
+          </div>
+          <div class="seg-facilo">
+            <div class="seg-field-label">新機能の刺さり方</div>
+            <div class="seg-field-value">スペック適合が比較的明確なため<strong>AIマッチングが機能しやすい</strong>。概要書の書き換えニーズもあり</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 物流施設 -->
+      <div class="seg-card">
+        <div class="seg-card-header">
+          <div class="seg-icon">🚛</div>
+          <div>
+            <h3>物流施設</h3>
+            <div class="seg-sub">投資対象としても拡大。プレイヤーが限定的で取引単価が大きい</div>
+          </div>
+        </div>
+        <div class="seg-body">
+          <div class="seg-field">
+            <div class="seg-field-label">顧客像</div>
+            <div class="seg-field-value"><strong>デベロッパー・物流大手・機関投資家・REIT</strong>。プレイヤーが限られている</div>
+          </div>
+          <div class="seg-field">
+            <div class="seg-field-label">取引の特徴</div>
+            <div class="seg-field-value"><strong>取引単価が数十億〜数百億円</strong>。土地取得→開発→リーシング→売却の多段階。財務モデルが意思決定の中心</div>
+          </div>
+          <div class="seg-field">
+            <div class="seg-field-label">営業フロー</div>
+            <div class="seg-field-value">1案件で複数の仲介フェーズが発生し、期間1年超が普通</div>
+          </div>
+          <div class="seg-field">
+            <div class="seg-field-label">情報の属人性</div>
+            <div class="seg-field-value">プレイヤー少数のため<strong>人脈=情報力</strong>。情報の非対称性そのものがビジネス</div>
+          </div>
+          <div class="seg-facilo">
+            <div class="seg-field-label">新機能の刺さり方</div>
+            <div class="seg-field-value">取引件数少×単価大で<strong>1件の出し忘れの機会損失が極めて大きい</strong>。概要書は高度に専門的で項目数も多く、自動書き換えの効果大</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 投資用一棟マンション -->
+      <div class="seg-card">
+        <div class="seg-card-header">
+          <div class="seg-icon">🏘</div>
+          <div>
+            <h3>投資用一棟マンション</h3>
+            <div class="seg-sub">事業用と収益用の境界。利回り至上主義で居住用とは全く異なる</div>
+          </div>
+        </div>
+        <div class="seg-body">
+          <div class="seg-field">
+            <div class="seg-field-label">顧客像</div>
+            <div class="seg-field-value"><strong>富裕層個人・資産管理法人・不動産投資法人</strong>。「住む」ではなく「運用する」目的。利回り・キャッシュフローで判断</div>
+          </div>
+          <div class="seg-field">
+            <div class="seg-field-label">取引の特徴</div>
+            <div class="seg-field-value"><strong>表面利回り・稼働率・修繕履歴</strong>が判断材料。レントロール（賃料明細）が必須書類</div>
+          </div>
+          <div class="seg-field">
+            <div class="seg-field-label">営業フロー</div>
+            <div class="seg-field-value">投資基準ヒアリング → 物件情報配信 → 現地確認 → 融資打診 → 買付。<strong>スピード勝負で良い物件は数日で決まる</strong></div>
+          </div>
+          <div class="seg-field">
+            <div class="seg-field-label">市場の特殊性</div>
+            <div class="seg-field-value">居住用マンションと物件形態は似るが<strong>動機・評価軸・顧客属性が全く異なる</strong>。投資用専門の仲介会社が棲み分け</div>
+          </div>
+          <div class="seg-facilo">
+            <div class="seg-field-label">新機能の刺さり方</div>
+            <div class="seg-field-value"><strong>「この投資家の基準に合う物件が出たら即提案」</strong>がニーズの核心。AIマッチングは「物件→投資家」方向でハマる。概要書書き換え（レントロール統合等）もニーズあり</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== 5. マッチング方向性 ===== -->
+  <section class="section" id="matching-direction">
+    <div class="section-label">補足</div>
+    <h2>AIマッチングの「方向」はセグメントで逆転する</h2>
+    <p>事業用は基本「物件軸」（物件→出す先を探す）ですが、投資用一棟は「投資家軸」（投資家の基準→物件を探す）になることがあります。コピーを書く際、どちら方向のマッチングを想起させるかに注意してください。</p>
+
+    <div class="table-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>セグメント</th>
+            <th>マッチングの方向</th>
+            <th>コピーの方向性</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-label">オフィス</td>
+            <td>双方向（テナント↔ビル）</td>
+            <td>「このニーズに合うビルは？」「このビルに興味を持ちそうなテナントは？」</td>
+          </tr>
+          <tr>
+            <td class="row-label">店舗</td>
+            <td>物件 → 出店希望者</td>
+            <td>「空いたテナント、誰に出す？」</td>
+          </tr>
+          <tr>
+            <td class="row-label">工場</td>
+            <td>物件 → 製造業法人</td>
+            <td>「この工場のスペックに合う会社は？」</td>
+          </tr>
+          <tr>
+            <td class="row-label">倉庫</td>
+            <td>物件 → 物流企業</td>
+            <td>「この倉庫を必要としている会社は？」</td>
+          </tr>
+          <tr>
+            <td class="row-label">物流施設</td>
+            <td>土地 → デベロッパー</td>
+            <td>「この用地に興味を持つデベは？」</td>
+          </tr>
+          <tr>
+            <td class="row-label">投資用一棟</td>
+            <td>投資家 → 物件（逆方向）</td>
+            <td>「この投資家の基準に合う物件が出た」</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===== 6. クリエイティブ方向性 ===== -->
+  <section class="section" id="creative-direction">
+    <div class="section-label">クリエイティブ方針</div>
+    <h2>訴求軸の優先度</h2>
+    <p>新機能2つをメイン訴求に据え、既存機能の訴求はサブに位置づけます。</p>
+
+    <div class="cr-axis">
+      <span class="cr-priority main">メイン訴求</span>
+      <h4>物件概要書のAI自動書き換え</h4>
+      <p>事業用仲介のど真ん中のペインを解決する機能。全セグメント共通で刺さる。</p>
+      <ul>
+        <li>「概要書の書き換え、まだ手作業ですか？」— ペイン直撃型</li>
+        <li>「1件30分の転記作業が、10秒に」— 数字インパクト型</li>
+        <li>「PDFをアップするだけで、自社書式に自動変換」— 機能説明型</li>
+      </ul>
+      <p style="margin-top:10px"><strong>注意：</strong>「取込」「登録」ではなく「書き換え」「自社書式に変換」の表現を使ってください。単なるOCR読み取りとの差別化がポイントです。</p>
+    </div>
+
+    <div class="cr-axis">
+      <span class="cr-priority main">メイン訴求</span>
+      <h4>非構造化AIマッチング</h4>
+      <p>属人化した「物件→顧客」のマッチングを仕組み化する機能。</p>
+      <ul>
+        <li>「あの物件、誰に出す？を、記憶に頼らない」— 属人化解消型</li>
+        <li>「商談メモを書くだけで、物件マッチングが動き出す」— 手軽さ訴求型</li>
+        <li>「提案漏れ、ゼロへ」— 結果訴求型</li>
+      </ul>
+      <p style="margin-top:10px"><strong>注意：</strong>「共有」「情報共有の自動化」という表現は避けてください。この機能は共有ではなく「マッチング（照合）」です。</p>
+    </div>
+
+    <div class="cr-axis">
+      <span class="cr-priority sub">サブ訴求</span>
+      <h4>検討度の可視化（既存機能）</h4>
+      <p>マイページの閲覧状況をリアルタイムに可視化。いただいた一覧のNo.6-8に該当。方向性は妥当ですが、新機能の後ろに位置づけます。</p>
+    </div>
+
+    <div class="cr-axis">
+      <span class="cr-priority sub">サブ訴求</span>
+      <h4>顧客体験の向上（既存機能）</h4>
+      <p>一覧のNo.9-12に該当。ただし現状のコピーは居住用でも通用する表現が多いため、<strong>事業用ならではの要素</strong>（物件概要書・投資判断データ・レントロール等）を盛り込む必要があります。</p>
+    </div>
+
+    <div class="cr-axis">
+      <span class="cr-priority sub">サブ訴求</span>
+      <h4>案件の属人化解消（既存機能）</h4>
+      <p>一覧のNo.13-14に該当。経営層向けの訴求として有効ですが、新機能と比べると優先度は下がります。</p>
+    </div>
+
+    <div class="callout callout-green" style="margin-top:24px">
+      <p><strong>いただいた一覧で活かしたい点：</strong>No.3「1件30分の物件登録が、10秒に」の数字インパクトは非常に良いです。この方向は新機能①でそのまま活かせます。表現パターン5種の整理も使いやすいフレームです。⑤数字フィーチャーのパターンをもう少し増やしたいです。</p>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    <span>Facilo マーケティング 渡辺</span>
+    <span>2026年7月</span>
+    <span>本資料は社外秘です</span>
+  </footer>
+
+</div>
+</body>
+</html>
